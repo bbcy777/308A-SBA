@@ -4,9 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script defer src="./main.mjs"></script>
+    <script defer src="./script/main.mjs"></script>
 </head>
 <body>
-    <button id="btn">Get a new photo</button>
+    <div>
+        <form>
+            <legend>Would you like to see some cat pictures?</legend>
+            <input type="radio" id="yes"/>
+            <label for="yes">Yes</label>
+            <input type="radio" id="no"/>
+            <label for="no">No</label>
+        </form>
+    </div>
+    <div id="image" style="display: none;">
+        <button id="preBtn">Previous</button>
+        <img id="catImg" alt="Cat Image" style="width: 300px;">
+        <button id="nextBtn">Next</button>
+    </div>
 </body>
 </html>
