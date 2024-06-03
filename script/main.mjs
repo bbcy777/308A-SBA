@@ -2,7 +2,10 @@
 
 const yesBtn = document.getElementById(`yes`);
 const imgDiv = document.getElementById(`image`)
-
+const preBtn = document.getElementById(`preBtn`);
+const nextBtn = document.getElementById("nextBtn");
+const catImages = [];
+let currentImageIndex = -1;
 
 yesBtn.addEventListener(`change`, showPhoto);
 
@@ -18,15 +21,25 @@ function showPhoto() {
             imgDiv.style.display = `none`;
         }
     }
-    
-
 }
-const preBtn = document.getElementById(`preBtn`);
-const nextBtn = document.getElementById("nextBtn");
-const catImages = [];
-let currentImageIndex = -1;
-preBtn.addEventListener(`click`, showPhoto);
-nextBtn.addEventListener(`click`,showPhoto);
+
+preBtn.addEventListener(`click`, ()=> {
+    currentImageIndex = (currentImageIndex - 1 + catImages.length) % catImages.length;
+    displayImage();
+});
+nextBtn.addEventListener(`click`,() => {
+    console.log(currentImageIndex);
+    if (currentImageIndex == catImages.length - 1) {
+        getNewPhoto()
+            .then(()=>{
+                currentImageIndex++;
+                displayImage();
+            });
+    } else {
+        currentImageIndex ++;
+        displayImage();
+    }
+});
 
 async function getNewPhoto() {
 
